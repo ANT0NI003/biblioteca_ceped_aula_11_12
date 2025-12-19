@@ -132,13 +132,14 @@ body.dark a i.fa-search {
                             <td>{{ e.data_emprestimo | date:'d/m/Y'}}</td>
                             <td>{{ e.data_devolucao }}</td>
                             <td>{{ e.data_prevista_devolucao | date:'d/m/Y'}}</td>
-                            {% if status == "Emprestado" %}
-                                <td><span class="badge badge-danger" style="background-color: #1a4d1a;
-                                color: white;">{{ e.get_status_display}}</span></td>
-                            {% else %}
-                                <td><span class="badge badge-success" style="background-color: #8c3579;
-                                color: white;">{{ e.get_status_display}} </span></td>
-                            {% endif %}
+<td>
+                            {% if e.status == 'E' %}
+                                  <span style="color: red; font-weight: bold;">Emprestado</span>
+                                {% elif e.status == 'D' %}
+                                    <span style="color: green; font-weight: bold;">Devolvido</span>
+                                {% else %}
+                                 {{ e.status }}
+                           {% endif %}
 
                             <td>
                                 <a href="#">
