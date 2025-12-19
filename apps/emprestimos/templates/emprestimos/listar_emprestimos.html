@@ -58,6 +58,8 @@ body.dark a i.fa-search {
     color: #8cff8c !important; /* verde claro no escuro */
 }
 
+
+
     body.dark .table-striped tbody tr:nth-of-type(odd) {
         background-color: #1c1c1c;
     }
@@ -130,7 +132,14 @@ body.dark a i.fa-search {
                             <td>{{ e.data_emprestimo | date:'d/m/Y'}}</td>
                             <td>{{ e.data_devolucao }}</td>
                             <td>{{ e.data_prevista_devolucao | date:'d/m/Y'}}</td>
-                            <td>{{ e.status  }}</td>
+                            {% if status == "Emprestado" %}
+                                <td><span class="badge badge-danger" style="background-color: #1a4d1a;
+                                color: white;">{{ e.get_status_display}}</span></td>
+                            {% else %}
+                                <td><span class="badge badge-success" style="background-color: #8c3579;
+                                color: white;">{{ e.get_status_display}} </span></td>
+                            {% endif %}
+
                             <td>
                                 <a href="#">
                                     <i class="fa fa-search" aria-hidden="true" style="color: blue;"></i>
