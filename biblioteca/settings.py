@@ -132,6 +132,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Aponta para a pasta 'static' na raiz do projeto
+]
+
 
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',

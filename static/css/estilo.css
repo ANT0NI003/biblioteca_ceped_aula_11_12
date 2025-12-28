@@ -1,0 +1,102 @@
+/* Tema padrão */
+body {
+    background-color: white;
+    color: #d8dee9;
+    transition: 0.3s;
+
+}
+
+/* cor botao voltar */
+/*  .btn-primary {background-color: red;}   */
+
+a {text-decoration: none; color: inherit;}
+
+a:hover {
+
+    text-decoration-line: underline;
+    text-decoration-color: #4da378;
+    text-decoration-thickness: 2px;
+}
+
+
+.tema-btn {
+
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+
+}
+
+.btn.btn-primary {
+  --bs-btn-bg: #121212;
+  --bs-btn-border-color: #8c8c8c;
+  --bs-btn-color: #fff;
+
+  --bs-btn-hover-bg: #1f1f1f;
+  --bs-btn-hover-border-color: #8c8c8c;
+  --bs-btn-hover-color: #fff;
+
+  --bs-btn-active-bg: #121212;
+  --bs-btn-active-border-color: #8c8c8c;
+}
+
+.btn.btn-success {
+  --bs-btn-bg: #121212;
+  --bs-btn-border-color: #8c8c8c;
+  --bs-btn-color: #fff;
+
+  --bs-btn-hover-bg: #1f1f1f;
+  --bs-btn-hover-border-color: #8c8c8c;
+  --bs-btn-hover-color: #fff;
+
+  --bs-btn-active-bg: #121212;
+  --bs-btn-active-border-color: #8c8c8c;
+}
+
+
+
+
+
+/* Tema dark */
+body.dark {
+    background-color: #121212;
+    color: white;
+    transition: 0.3s;
+}
+
+body.dark .card {
+    background-color: #1e1e1e;
+    color: #e5e9f0;
+}
+
+
+body.dark .table {
+    background-color: #1e1e1e;
+    --bs-table-color: #4da378;
+    /* cor do fundo */
+    --bs-table-bg: #1e1e1e;
+    /* cor de cada linha entre linha */
+    --bs-table-striped-bg: #2a2a2a;
+    /* cor das linhas normais*/
+    --bs-table-striped-color: #4da378;
+}
+
+body.dark .tema-btn {
+    background-color: #cdcdcd;
+    color: black;
+}
+
+
+
+body.dark .table a:hover {
+    text-decoration-line: underline;
+    text-decoration-color: #4da378;
+    text-decoration-thickness: 2px;
+}
+
+body.dark td a {
+    text-decoration: none;
+    color: inherit;
+}
