@@ -16,9 +16,6 @@
 <body>
 
 <!-- Botão de alternar tema -->
-<button class="tema-btn position-fixed top-0 end-0 m-3" style="z-index:9999;" onclick="mudarTema()">
-    Alternar Tema
-</button>
 <script>
 function mudarTema() {
     document.body.classList.toggle("dark");
@@ -44,19 +41,23 @@ if (localStorage.getItem("tema") === "dark") {
     <div class="card mb-3">
         <div class="card-header">
             <h2><i class="fa fa-list"> Listagem de emprestimos</i></h2>
+            <div class="card-button">
+            <!-- Botão de alternar tema -->
+                <button class="tema-btn" onclick="mudarTema()">Alternar Tema</button>
+        </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>id</th>
-                            <th>aluno</th>
+                            <th>Id</th>
+                            <th>Aluno</th>
                             <th>livro</th>
-                            <th>data_emprestimo</th>
-                            <th>data_devolucao</th>
-                            <th>data_prevista_devolucao</th>
-                            <th>status</th>
+                            <th>Data do Empréstimo</th>
+                            <th>Data Prev. Devolução</th>
+                            <th>Data Devolução</th>
+                            <th>Status</th>
                             <th>Opções</th>
                         </tr>
                     </thead>
@@ -64,12 +65,12 @@ if (localStorage.getItem("tema") === "dark") {
                     {% for e in relacao_emprestimos %}
                         <tr>
                             <td>{{ e.id }}</td>
-                            <td>{{ e.aluno_id }}</td>
+                            <td><a href="{% url 'emprestimos:aluno_emprestimo' e.id%}">{{ e.aluno_id | upper }}</a></td>
                             <td><a href="#">{{ e.livro_id | upper }}</a></td>
                             <td>{{ e.data_emprestimo | date:'d/m/Y'}}</td>
                             <td>{{ e.data_devolucao }}</td>
                             <td>{{ e.data_prevista_devolucao | date:'d/m/Y'}}</td>
-<td>
+                            <td>
                             {% if e.status == 'E' %}
                                   <span style="color: red; font-weight: bold;">Emprestado</span>
                                 {% elif e.status == 'D' %}
@@ -99,6 +100,7 @@ if (localStorage.getItem("tema") === "dark") {
     <div class="col-12 card mb-3">
         <div class="card-header">
             <a href="{% url 'emprestimos:inserir_emprestimo' %}"><button class="btn btn-success">Cadastrar</button></a>
+            <a href="{% url 'index' %}" class="btn btn-primary">Voltar</a>
         </div>
     </div>
 </body>

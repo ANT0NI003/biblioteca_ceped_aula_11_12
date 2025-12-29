@@ -1,10 +1,26 @@
 /* Tema padrão */
+/* cor do fundo real */
 body {
     background-color: white;
     color: #d8dee9;
     transition: 0.3s;
 
 }
+/* cor de fundo e titulo */
+.card {
+    background-color: #f6f6f6;
+    color: #131313;
+}
+body .table {
+    --bs-table-bg: #ffffff;
+    --bs-table-color: #212529;
+
+    --bs-table-striped-bg: #eaeaea;
+    --bs-table-striped-color: #212529;
+
+    --bs-border-color: #dee2e6;
+}
+
 
 /* cor botao voltar */
 /*  .btn-primary {background-color: red;}   */
@@ -17,7 +33,15 @@ a:hover {
     text-decoration-color: #4da378;
     text-decoration-thickness: 2px;
 }
-
+.card-button {
+  position: relative;
+}
+.tema-btn {
+    position: absolute;
+    top: -40px;
+    right: 15px;
+    z-index: 9999;
+}
 
 .tema-btn {
 
@@ -28,7 +52,7 @@ a:hover {
     padding: 6px 12px;
 
 }
-
+/* cor botao voltar */
 .btn.btn-primary {
   --bs-btn-bg: #121212;
   --bs-btn-border-color: #8c8c8c;
@@ -41,7 +65,7 @@ a:hover {
   --bs-btn-active-bg: #121212;
   --bs-btn-active-border-color: #8c8c8c;
 }
-
+/* cor botao cadastro */
 .btn.btn-success {
   --bs-btn-bg: #121212;
   --bs-btn-border-color: #8c8c8c;
@@ -55,7 +79,12 @@ a:hover {
   --bs-btn-active-border-color: #8c8c8c;
 }
 
-
+/* cor do form livro */
+.form-box {
+    background-color: #eaeaea;
+    border-color: #444;
+    border-radius: .25rem;
+}
 
 
 
@@ -73,14 +102,31 @@ body.dark .card {
 
 
 body.dark .table {
-    background-color: #1e1e1e;
     --bs-table-color: #4da378;
-    /* cor do fundo */
-    --bs-table-bg: #1e1e1e;
-    /* cor de cada linha entre linha */
-    --bs-table-striped-bg: #2a2a2a;
-    /* cor das linhas normais*/
+    --bs-border-color: #2f2f2;
+    --bs-table-bg: #131313;
+    --bs-table-striped-bg: #272727;
     --bs-table-striped-color: #4da378;
+    --bs-table-hover-bg: #333;
+    --bs-table-hover-color: #4da378;
+}
+
+/* cor do form livro */
+body.dark .form-box {
+    background-color: #2a2a2a;
+    color: #4da378;
+    border-radius: .25rem;
+}
+body.dark .form-control {
+    background-color: #3e3e3e;
+    border-color: #4da378;
+    color: #a7cfbb;
+}
+body.dark .form-control:focus {
+    background-color: #2a2a2a;
+    color: #a7cfbb;
+    border-color: #4da378;
+    box-shadow: 0 0 0 .15rem #4da37855 ;
 }
 
 body.dark .tema-btn {
@@ -88,7 +134,12 @@ body.dark .tema-btn {
     color: black;
 }
 
-
+/* cor site excluir */
+body.dark.pagina-excluir h5,
+body.dark.pagina-excluir .card-title {
+    color: #4da378;
+    background-color: #1e1e1e;
+}
 
 body.dark .table a:hover {
     text-decoration-line: underline;

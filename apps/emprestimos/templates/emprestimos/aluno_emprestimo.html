@@ -3,7 +3,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Status Emprestimo</title>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body class="pagina-excluir">
+<body>
 
-<!-- Botão de alternar tema -->
+
+
 <script>
 function mudarTema() {
     document.body.classList.toggle("dark");
@@ -37,7 +38,7 @@ if (localStorage.getItem("tema") === "dark") {
 
 <div class="card">
     <div class="card-header">
-        <h2> Tem certeza que deseja remover o emprestimo abaixo? </h2>
+        <h1>Emprestimos do aluno: {{emprestimo.aluno_id}}</h1>
         <div class="card-button">
             <!-- Botão de alternar tema -->
                 <button class="tema-btn" onclick="mudarTema()">Alternar Tema</button>
@@ -47,17 +48,16 @@ if (localStorage.getItem("tema") === "dark") {
         <h5 class="card-title">Id: {{emprestimo.id}}</h5>
         <h5 class="card-title">Aluno: {{emprestimo.aluno_id}}</h5>
         <h5 class="card-title">Livro: {{emprestimo.livro_id}}</h5>
-        <h5 class="card-title">Data Do Emprestimo: {{emprestimo.data_emprestimo}}</h5>
-        <h5 class="card-title">Data De Devolução: {{emprestimo.data_devolucao}}</h5>
-        <h5 class="card-title">Data Prevista De Devolução: {{emprestimo.data_prevista_devolucao}}</h5>
+        <h5 class="card-title">Data do Empréstimo: {{emprestimo.data_emprestimo}}</h5>
+        <h5 class="card-title">Data Prevista de Devolução: {{emprestimo.data_prevista_devolucao}}</h5>
+        <h5 class="card-title">Data de Devolução: {{emprestimo.data_devolucao}}</h5>
         <h5 class="card-title">Status: {{emprestimo.get_status_display}}</h5>
 
         <form method="post">
              {% csrf_token %}
-            <button class="btn btn-danger" type="submit">Remover</button>
             <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary">Voltar</a>
         </form>
     </div>
 </div>
-</body class="pagina-excluir">
+</body>
 </html>

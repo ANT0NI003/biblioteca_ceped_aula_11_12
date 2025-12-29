@@ -43,3 +43,9 @@ def excluir_emprestimo(request, id):
         messages.error(request, 'O Emprestimo foi excluído com sucesso.')
         return redirect('emprestimos:listar_emprestimos')
     return render(request, template_name, context)
+
+def aluno_emprestimo(request, id):
+    template_name = 'emprestimos/aluno_emprestimo.html'
+    emprestimo = Emprestimo.objects.get(id=id)
+    context = {'emprestimo': emprestimo}
+    return render(request, template_name, context)

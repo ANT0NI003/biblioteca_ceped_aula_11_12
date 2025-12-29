@@ -16,12 +16,7 @@
 
 </head>
 <body>
-    <div class="col-12 card mb-3">
-        <div class="card-header">
-    <!-- Botão de alternar tema -->
-        <button class="tema-btn"style="z-index:9999;" onclick="mudarTema()">Alternar Tema</button></a>
 
-    </div>
 <script>
 function mudarTema() {
     document.body.classList.toggle("dark");
@@ -47,6 +42,11 @@ if (localStorage.getItem("tema") === "dark") {
     <div class="card mb-3">
         <div class="card-header">
             <h2><i class="fa fa-list"> Listagem de livros</i></h2>
+                <div class="card-button">
+            <!-- Botão de alternar tema -->
+                <button class="tema-btn" onclick="mudarTema()">Alternar Tema</button>
+
+                </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -96,27 +96,9 @@ if (localStorage.getItem("tema") === "dark") {
     <div class="col-12 card mb-3">
         <div class="card-header">
             <a href="{% url 'livros:inserir_livro' %}"><button class="btn btn-success">Cadastrar</button></a>
+            <a href="{% url 'index' %}" class="btn btn-primary">Voltar</a>
         </div>
     </div>
-
-<script>
-    function mudarTema() {
-        document.body.classList.toggle("dark");
-
-        // Salvar preferência
-        if (document.body.classList.contains("dark")) {
-            localStorage.setItem("tema", "dark");
-        } else {
-            localStorage.setItem("tema", "light");
-        }
-    }
-
-    // Carregar tema salvo
-    if (localStorage.getItem("tema") === "dark") {
-        document.body.classList.add("dark");
-    }
-</script>
-
 
 </body>
 </html>

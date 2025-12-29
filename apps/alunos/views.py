@@ -42,3 +42,4 @@ def excluir_aluno(request, id):
         messages.error(request, 'O Aluno foi excluído com sucesso.')
         return redirect('alunos:listar_alunos')
     return render(request, template_name, context)
+
