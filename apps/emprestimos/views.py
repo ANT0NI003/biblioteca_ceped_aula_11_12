@@ -2,26 +2,52 @@ from django.contrib import messages
 from django.shortcuts import redirect, render, get_object_or_404
 
 from apps.emprestimos.forms import EmprestimoForm
+from django.db.models.functions import Lower
 from .models import Emprestimo
 
 
 def inserir_emprestimo(request):
     template_name = 'emprestimos/form_emprestimo.html'
+
     if request.method == 'POST':
-        form = EmprestimoForm(request.POST or None, request.FILES)
+        form = EmprestimoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'O cadastro de empréstimo foi realizado com sucesso!')
-        return redirect('emprestimos:listar_emprestimos')
-    form = EmprestimoForm()
-    context = {'form': form}
-    return render(request, template_name, context)
+            return redirect('emprestimos:listar_emprestimos')
+        else:
+            print(form.errors)  # 👈 ESSENCIAL
+
+    else:
+        form = EmprestimoForm()
+
+    return render(request, template_name, {'form': form})
 
 def listar_emprestimos(request):
-    template_name = 'emprestimos/listar_emprestimos.html'
-    emprestimos = Emprestimo.objects.all()
-    context = {'relacao_emprestimos': emprestimos}
-    return render(request, template_name, context)
+    ordens = {
+        'id_asc': 'id',
+        'id_desc': '-id',
+
+        'aluno_asc': Lower('aluno_id__nome'),
+        'aluno_desc': Lower('aluno_id__nome').desc(),
+
+        'livro_asc': Lower('livro_id__titulo'),
+        'livro_desc': Lower('livro_id__titulo').desc(),
+    }
+
+    ordem = request.GET.get('ordem', 'id_asc')
+    ordem_db = ordens.get(ordem, 'id')
+
+    emprestimos = (
+        Emprestimo.objects
+        .select_related('aluno_id', 'livro_id')
+        .order_by(ordem_db)
+    )
+
+    return render(request, 'emprestimos/listar_emprestimos.html', {
+        'emprestimos': emprestimos,
+        'ordem': ordem,
+    })
 
 def editar_emprestimo(request, id):
     template_name = 'emprestimos/form_emprestimo.html'

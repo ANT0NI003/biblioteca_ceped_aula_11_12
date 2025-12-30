@@ -11,10 +11,7 @@
 </head>
 
 <body>
-<!-- Botão de alternar tema -->
-<button class="tema-btn position-fixed top-0 end-0 m-3" style="z-index:9999;" onclick="mudarTema()">
-    Alternar Tema
-</button>
+<body>
 <script>
 function mudarTema() {
     document.body.classList.toggle("dark");
@@ -26,32 +23,49 @@ function mudarTema() {
     }
 }
 
-/* Aplicar tema salvo ao carregar a página */
 if (localStorage.getItem("tema") === "dark") {
     document.body.classList.add("dark");
 }
 </script>
 
-    <h1>Biblioteca do Povão</h1>
+<body>
 
-    <a href="{% url 'alunos:inserir_aluno' %}">
-    <button>Cadastrar Alunos</button>
-    </a><br>
-    <a href="{% url 'alunos:listar_alunos' %}">
-    <button>Listagem de Alunos</button>
-    </a><br>
-    <a href="{% url 'livros:inserir_livro' %}">
-    <button>Cadastrar Livros</button>
-    </a><br>
-    <a href="{% url 'livros:listar_livros' %}">
-    <button>Listar Livros</button>
-    </a><br>
-    <a href="{% url 'emprestimos:inserir_emprestimo' %}">
-    <button>Cadastrar Emprestimos</button>
-    </a><br>
-    <a href="{% url 'emprestimos:listar_emprestimos' %}">
-    <button>Lista de Emprestimos</button>
-    </a><br>
+<div class="container d-flex justify-content-center align-items-center vh-100">
 
+    <div class="card shadow-lg p-4 home-card text-center">
+
+        <h1 class="mb-2">Biblioteca do Povão</h1>
+		<div class="card-button">
+               		 <!-- Botão de alternar tema -->
+                  	  <button class="tema-btn position-fixed top-0 end-0 m-4" onclick="mudarTema()">Alternar Tema</button>
+            	</div>
+
+        <p class="text-muted mb-4">
+            <h3> Sistema de gerenciamento da biblioteca </h3>
+        </p>
+
+        <div class="d-grid gap-2">
+            <a href="{% url 'alunos:inserir_aluno' %}" class="menu-btn">
+                Cadastrar Aluno
+            </a>
+            <a href="{% url 'livros:inserir_livro' %}" class="menu-btn">
+                Cadastrar Livro
+            </a>
+            <a href="{% url 'emprestimos:inserir_emprestimo' %}" class="menu-btn">
+                Cadastrar Empréstimo
+            </a>
+            <a href="{% url 'alunos:listar_alunos' %}" class="menu-btn">
+                Listar Alunos
+            </a>
+            <a href="{% url 'livros:listar_livros' %}" class="menu-btn">
+                Listar Livros
+            </a>
+            <a href="{% url 'emprestimos:listar_emprestimos' %}" class="menu-btn">Listar Empréstimos</a>
+
+        </div>
+
+    </div>
+
+</div>
 </body>
 </html>

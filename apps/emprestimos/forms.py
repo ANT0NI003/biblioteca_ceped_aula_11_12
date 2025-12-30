@@ -7,18 +7,11 @@ class EmprestimoForm(forms.ModelForm):
 
     class Meta:
         model = Emprestimo
-        exclude = ('data_emprestimo',)
+        exclude = ('data_emprestimo','data_devolucao')
         fields = '__all__'
 
         widgets = {
-            'data_devolucao': forms.DateInput(
-                format=('%d/%m/%Y'),
-                attrs={'class': 'form-control',
-                       'placeholder': 'Selecione uma data',
-                       'type': 'date'
-                       }),
             'data_prevista_devolucao': forms.DateInput(
-                format=('%d/%m/%Y'),
                 attrs={'class': 'form-control',
                        'placeholder': 'Selecione uma data',
                        'type': 'date'

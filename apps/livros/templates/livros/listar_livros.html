@@ -68,7 +68,11 @@ if (localStorage.getItem("tema") === "dark") {
                     {% for l in relacao_livros %}
                         <tr>
                             <td>{{ l.id }}</td>
-                            <td><a href="#">{{ l.titulo.upper }}</a></td>
+                            <td><a href="#" class="link-titulo">
+                                    <div class="titulo-livro" title="{{ l.titulo }}">
+                                        {{ l.titulo|upper }}
+                                    </div>
+                            </td>
                             <td>{{ l.autor }}</td>
                             <td>{{ l.edicao }}</td>
                             <td>{{ l.editora }}</td>

@@ -70,14 +70,9 @@ if (localStorage.getItem("tema") === "dark") {
                 <div class="container">
                     <div class="p-1 mb-2 form-box">
                         <div class="row">
-                            <div class="col-md-4 mb-0">
-                                {{ form.data_devolucao.errors }}
-                                <label><strong>Data De Devolucao:</strong></label>
-                                {{ form.data_devolucao |add_class:'form-control'  }}
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 {{ form.data_prevista_devolucao.erros | date:'d/m/Y'}}
-                                <label><strong>Data da data_prevista_devolucao:</strong></label>
+                                <label><strong>Data Prevista de Devolucao:</strong></label>
                                 {{ form.data_prevista_devolucao |add_class:'form-control' }}
                             </div>
                             <div class="col-md-3">

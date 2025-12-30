@@ -1,5 +1,5 @@
 from django.contrib import messages
-
+from django.db.models.functions import Lower
 from .forms import AlunoForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Aluno
@@ -18,9 +18,27 @@ def inserir_aluno(request):
 
 def listar_alunos(request):
     template_name = 'alunos/listar_alunos.html'
-    alunos = Aluno.objects.all()
-    context = {'alunos': alunos}
-    return render(request, template_name, context)
+
+    ordens = {
+        'id_asc': 'id',
+        'id_desc': '-id',
+
+        'nome_asc': Lower('nome'),
+        'nome_desc': Lower('nome').desc(),
+
+        'matricula_asc': Lower('matricula'),
+        'matricula_desc': Lower('matricula').desc(),
+    }
+
+    ordem = request.GET.get('ordem', 'id_asc')
+    ordem_db = ordens.get(ordem, 'id')
+
+    alunos = Aluno.objects.all().order_by(ordem_db)
+
+    return render(request, template_name, {
+        'alunos': alunos,
+        'ordem': ordem,
+    })
 
 def editar_aluno(request, id):
     template_name = 'alunos/form_aluno.html'
