@@ -14,6 +14,7 @@ class Emprestimo(models.Model):
     def __str__(self):
         return self.status
 
+
     class Meta:
         db_table = 'Emprestimo'
         verbose_name = 'Emprestimo'

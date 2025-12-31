@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from apps.emprestimos.forms import EmprestimoForm
 from django.db.models.functions import Lower
 from .models import Emprestimo
+from apps.alunos.models import Aluno
 
 
 def inserir_emprestimo(request):
@@ -50,7 +51,7 @@ def listar_emprestimos(request):
     })
 
 def editar_emprestimo(request, id):
-    template_name = 'emprestimos/form_emprestimo.html'
+    template_name = 'emprestimos/editar_emprestimo.html'
     emprestimo = get_object_or_404(Emprestimo, id=id)
     form = EmprestimoForm(request.POST or None, request.FILES or None, instance=emprestimo)
     context = {'form': form}
@@ -58,6 +59,10 @@ def editar_emprestimo(request, id):
         form.save()
         messages.success(request, 'Os dados foram atualizados com sucesso.')
         return redirect('emprestimos:listar_emprestimos')
+    else:
+        print(form.errors)  # 👈 ESSENCIAL
+
+
     return render(request, template_name, context)
 
 def excluir_emprestimo(request, id):
@@ -72,6 +77,11 @@ def excluir_emprestimo(request, id):
 
 def aluno_emprestimo(request, id):
     template_name = 'emprestimos/aluno_emprestimo.html'
-    emprestimo = Emprestimo.objects.get(id=id)
-    context = {'emprestimo': emprestimo}
+    aluno = Aluno.objects.get(id=id)
+    emprestimos = Emprestimo.objects.filter(aluno_id=id)
+    context = {
+        'aluno': aluno,
+        'emprestimos': emprestimos,
+        'aluno_id': id,
+    }
     return render(request, template_name, context)

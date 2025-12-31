@@ -78,7 +78,7 @@ if (localStorage.getItem("tema") === "dark") {
                     {% for a in alunos %}
                         <tr>
                             <td>{{ a.id }}</td>
-                            <td><a href="#">{{ a.nome.upper }}</a></td>
+                            <td><a href="{% url 'emprestimos:aluno_emprestimo' a.id%}">{{ a.nome.upper }}</a></td>
                             <td>{{ a.matricula }}</td>
                             <td>{{ a.email }}</td>
                             <td>{{ a.telefone }}</td>

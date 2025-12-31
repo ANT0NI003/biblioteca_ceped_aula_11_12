@@ -1,6 +1,5 @@
 {% load widget_tweaks %}
 {% load static %}
-{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -97,7 +96,39 @@ if (localStorage.getItem("tema") === "dark") {
                             </div>
                         </div>
                     </div>
+<div class="container">
+    <div class="p-3 mb-3 bg-light text-dark rounded border">
+        <label><strong>Capa do Livro:</strong></label>
+
+        <div id="paste-area" class="border rounded p-4 text-center mb-2"
+             style="border: 2px dashed #ccc !important; cursor: pointer; background: #fdfdfd; position: relative;"
+             onclick="document.getElementById('id_foto').click()">
+
+            <p id="paste-msg" class="mb-0">
+                <i class="fa fa-cloud-upload fa-2x d-block mb-2"></i>
+                Arraste uma imagem, <strong>cole (Ctrl+V)</strong> ou clique para selecionar
+            </p>
+
+            <div id="preview-container" class="d-none">
+                <img id="preview-img" src="" class="img-fluid rounded mb-2" style="max-height: 250px;">
+                <br>
+                <button type="button" class="btn btn-sm btn-danger" onclick="limparCapa(event)">
+                    <i class="fa fa-trash"></i> Remover Capa
+                </button>
+            </div>
+        </div>
+
+        <div class="d-none">
+            {{ form.foto|add_class:"form-control-file"|attr:"id:id_foto" }}
+        </div>
+
+        <small class="text-muted">Formatos: JPG ou PNG. Você pode copiar imagens direto da internet.</small>
+            </form>
+        </div>
+    </div>
+</div>
                 </div>
+
                 <br>
                 <div class="container">
                     <div class="p-1 mb-2 form-box">
