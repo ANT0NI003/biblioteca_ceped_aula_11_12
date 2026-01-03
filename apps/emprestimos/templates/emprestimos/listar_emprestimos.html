@@ -64,7 +64,8 @@ if (localStorage.getItem("tema") === "dark") {
             <!-- Botão de alternar tema -->
                 <button class="tema-btn" onclick="mudarTema()">Alternar Tema</button>
         </div>
-<div class="dropdown">
+<div class="mb-3">
+        <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="ordenarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             Ordenar
         </button>
@@ -76,9 +77,14 @@ if (localStorage.getItem("tema") === "dark") {
             <li><a class="dropdown-item" href="?ordem=livro_asc">Livro Crescente</a></li>
             <li><a class="dropdown-item" href="?ordem=livro_desc">Livro Decrescente</a></li>
         </ul>
+        </div>
+
     </div>
         </div>
         <div class="card-body">
+
+
+
             <div class="table-responsive">
                 <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -132,6 +138,7 @@ if (localStorage.getItem("tema") === "dark") {
             </div>
         </div>
     </div>
+
     <div class="col-12 card mb-3">
         <div class="card-header">
             <a href="{% url 'emprestimos:inserir_emprestimo' %}"><button class="btn btn-success">Cadastrar</button></a>

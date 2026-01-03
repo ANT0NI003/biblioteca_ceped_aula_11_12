@@ -1,5 +1,5 @@
 from django.contrib import messages
-
+from django.db.models.functions import Lower
 from .forms import LivroForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Livro
@@ -17,10 +17,30 @@ def inserir_livro(request):
     return render(request, template_name, context)
 
 def listar_livros(request):
-    template_name = 'livros/listar_livros.html'
-    livros = Livro.objects.all()
-    context = {'relacao_livros': livros}
-    return render(request, template_name, context)
+    ordens = {
+        'titulo_asc': Lower('titulo'),
+        'titulo_desc': Lower('titulo').desc(),
+
+        'autor_asc': Lower('autor'),
+        'autor_desc': Lower('autor').desc(),
+
+        'editora_asc': Lower('editora'),
+        'editora_desc': Lower('editora').desc(),
+    }
+
+    ordem = request.GET.get('ordem', 'titulo_asc')
+    ordem_db = ordens.get(ordem, Lower('titulo'))
+
+    livros = (
+        Livro.objects
+        .all()
+        .order_by(ordem_db)
+    )
+
+    return render(request, 'livros/listar_livros.html', {
+        'livros': livros,
+        'ordem': ordem,
+    })
 
 
 def editar_livro(request, id):
