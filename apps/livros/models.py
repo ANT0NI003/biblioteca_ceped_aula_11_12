@@ -15,6 +15,8 @@ class Livro(models.Model):
         return self.titulo
 
 
+
+
     class Meta:
         db_table = 'Livro'
         verbose_name = 'Livro'

@@ -97,7 +97,7 @@ if (localStorage.getItem("tema") === "dark") {
                             <div class="sem-capa">Sem Capa</div>
                             {% endif %}
                             </td>
-                            <td><a href="#" class="link-titulo">
+                            <td><a href="{% url 'emprestimos:livro_emprestimo' l.id%}" class="link-titulo">
                                     <div class="titulo-livro" title="{{ l.titulo }}">
                                         {{ l.titulo|upper }}
                                     </div>

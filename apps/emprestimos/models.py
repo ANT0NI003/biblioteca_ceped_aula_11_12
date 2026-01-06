@@ -15,6 +15,7 @@ class Emprestimo(models.Model):
         return self.status
 
 
+
     class Meta:
         db_table = 'Emprestimo'
         verbose_name = 'Emprestimo'

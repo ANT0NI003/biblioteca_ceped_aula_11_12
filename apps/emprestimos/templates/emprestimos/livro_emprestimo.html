@@ -39,7 +39,7 @@ if (localStorage.getItem("tema") === "dark") {
 
 <div class="card">
     <div class="card-header">
-        <h1>Emprestimos do aluno: {{aluno.nome}}</h1>
+        <h1>Emprestimos do livro: {{livro.titulo}}</h1>
         <div class="card-button">
             <!-- Botão de alternar tema -->
                 <button class="tema-btn" onclick="mudarTema()">Alternar Tema</button>
@@ -52,7 +52,7 @@ if (localStorage.getItem("tema") === "dark") {
              <div class="card-body">
                 <hr>
                 <h5 class="card-title">Id: {{e.id}}</h5>
-                <h5 class="card-title">Livro: {{ e.livro_id }}</h5>
+                <h5 class="card-title">Aluno: {{ e.aluno_id }}</h5>
                 <h5 class="card-title">Data do Empréstimo: {{ e.data_emprestimo }}</h5>
                 <h5 class="card-title">Data Prevista: {{ e.data_prevista_devolucao }}</h5>
                 <h5 class="card-title">Data de Devolução: {{ e.data_devolucao }}</h5>
@@ -62,7 +62,7 @@ if (localStorage.getItem("tema") === "dark") {
     {% empty %}
         <div class="card">
              <div class="card-body">
-                <p><h5>Este aluno não possui empréstimos. </h5></p>
+                <p><h5>Este livro não possui empréstimos. </h5></p>
              </div>
         </div>
     {% endfor %}

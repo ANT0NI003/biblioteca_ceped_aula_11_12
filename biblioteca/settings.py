@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.livros',
     'apps.emprestimos',
     'apps.core',
+    'apps.editoras',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',  # Aponta para a pasta 'static' na raiz do projeto
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',

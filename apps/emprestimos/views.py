@@ -5,6 +5,7 @@ from apps.emprestimos.forms import EmprestimoForm
 from django.db.models.functions import Lower
 from .models import Emprestimo
 from apps.alunos.models import Aluno
+from apps.livros.models import Livro
 
 
 def inserir_emprestimo(request):
@@ -83,5 +84,16 @@ def aluno_emprestimo(request, id):
         'aluno': aluno,
         'emprestimos': emprestimos,
         'aluno_id': id,
+    }
+    return render(request, template_name, context)
+
+def livro_emprestimo(request, id):
+    template_name = 'emprestimos/livro_emprestimo.html'
+    livro = Livro.objects.get(id=id)
+    emprestimos = Emprestimo.objects.filter(livro_id=id)
+    context = {
+        'livro': livro,
+        'emprestimos': emprestimos,
+        'livro_id': id,
     }
     return render(request, template_name, context)
