@@ -51,7 +51,7 @@ def editar_livro(request, id):
     if form.is_valid():
         form.save()
         messages.success(request, 'Os dados foram atualizados com sucesso.')
-        return redirect('livros:editar_livro')
+        return redirect('livros:listar_livros')
     return render(request, template_name, context)
 
 def excluir_livro(request, id):

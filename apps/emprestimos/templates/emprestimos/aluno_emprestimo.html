@@ -1,7 +1,9 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+{% extends 'base.html' %}
+
+{% block title %}Emprestimos de Alunos{% endblock %}
+
+{% block body_class %}pagina-excluir{% endblock %}
+{% block content %}
     <meta charset="UTF-8">
     <title>Status Emprestimo</title>
 
@@ -74,6 +76,4 @@ if (localStorage.getItem("tema") === "dark") {
     </div>
 </div>
 
-</body>
-
-</html>
+{% endblock %}

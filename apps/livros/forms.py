@@ -12,7 +12,7 @@ class LivroForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'ano_publicacao': forms.DateInput(
-                format=('%Y/%m/%d'),
+                format='%Y-%m-%d',
                 attrs={'type': 'date', 'class': 'form-control',
                        'placeholder': 'Selecione uma data'
 
