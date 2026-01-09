@@ -1,0 +1,95 @@
+
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Listagem de Editoras{% endblock %}
+
+{% block content %}
+
+<script>
+function mudarTema() {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("tema", "dark");
+    } else {
+        localStorage.setItem("tema", "light");
+    }
+}
+
+/* Aplicar tema salvo ao carregar a página */
+if (localStorage.getItem("tema") === "dark") {
+    document.body.classList.add("dark");
+}
+</script>
+
+
+    <div class="row">
+        <div class="col-12">
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2><i class="fa fa-list"> Listagem de editoras</i></h2>
+            <div class="card-button">
+            <!-- Botão de alternar tema -->
+                <button class="tema-btn" onclick="mudarTema()">Alternar Tema</button>
+        </div>
+             <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="ordenarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Ordenar
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="ordenarDropdown">
+                    <li><a class="dropdown-item" href="?ordem=id_asc">ID Crescente</a></li>
+                    <li><a class="dropdown-item" href="?ordem=id_desc">ID Decrescente</a></li>
+                    <li><a class="dropdown-item" href="?ordem=nome_asc">Nome A → Z</a></li>
+                    <li><a class="dropdown-item" href="?ordem=nome_desc">Nome Z → A</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body">
+
+
+
+            <div class="table-responsive">
+                <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for e in editoras %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td><a href="#">{{ e.nome.upper }}</a></td>
+                            <td>{{ e.email }}</td>
+                            <td>{{ e.telefone }}</td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-search" aria-hidden="true" style="color: blue;"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-pencil-square" aria-hidden="true" style="color: #6B8E23;"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-trash" aria-hidden="true" style="color: red;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 card mb-3">
+        <div class="card-header">
+            <a href="{% url 'editoras:inserir_editora' %}"><button class="btn btn-success">Cadastrar</button></a>
+            <a href="{% url 'index' %}" class="btn btn-primary">Voltar</a>
+        </div>
+    </div>
+{% endblock %}

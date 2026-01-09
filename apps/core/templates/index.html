@@ -57,6 +57,9 @@ if (localStorage.getItem("tema") === "dark") {
             <a href="{% url 'emprestimos:inserir_emprestimo' %}" class="menu-btn">
                 Cadastrar Empréstimo
             </a>
+
+            <a href="{% url 'editoras:inserir_editora' %}" class="menu-btn">Cadastrar Editora</a>
+
             <a href="{% url 'alunos:listar_alunos' %}" class="menu-btn">
                 Listar Alunos
             </a>
@@ -65,6 +68,7 @@ if (localStorage.getItem("tema") === "dark") {
             </a>
             <a href="{% url 'emprestimos:listar_emprestimos' %}" class="menu-btn">Listar Empréstimos</a>
 
+            <a href="{% url 'editoras:listar_editoras' %}" class="menu-btn">Listar editoras</a>
         </div>
 
     </div>

@@ -41,6 +41,15 @@ if (localStorage.getItem("tema") === "dark") {
         <div class="card">
              <div class="card-body">
                 <hr>
+                 <td>
+                 <img src="{{ l.foto.url }}"
+                      style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px; cursor: zoom-in;"
+                      data-bs-toggle="modal"
+                      data-bs-target="#fotoModal"
+                      data-bs-titulo="{{ l.titulo }}"
+                      data-bs-url="{{ l.foto.url }}"
+                      onclick="ampliarFoto(this)">
+                 </td>
                 <h5 class="card-title">Id: {{e.id}}</h5>
                 <h5 class="card-title">Aluno: {{ e.aluno_id }}</h5>
                 <h5 class="card-title">Data do Empréstimo: {{ e.data_emprestimo }}</h5>

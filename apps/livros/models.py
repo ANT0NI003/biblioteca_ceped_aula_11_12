@@ -1,4 +1,5 @@
 from django.db import models
+from apps.editoras.models import Editora
 
 class Livro(models.Model):
     titulo = models.CharField(max_length=100, blank=False, null=False)
