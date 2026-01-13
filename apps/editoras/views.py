@@ -4,6 +4,8 @@ from .forms import EditoraForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Editora
 
+from django.http import JsonResponse
+
 def inserir_editora(request):
     template_name = 'editoras/form_editora.html'
     if request.method == 'POST':
@@ -37,3 +39,20 @@ def listar_editoras(request):
         'editoras': editoras,
         'ordem': ordem,
     })
+
+def editar_editora(request, id):
+    template_name = 'editoras/form_editora.html'
+    editora = get_object_or_404(Editora, id=id)
+    form = EditoraForm(request.POST or None, request.FILES or None, instance=editora)
+    context = {'form': form}
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Os dados foram atualizados com sucesso.')
+        return redirect('editoras:listar_editoras')
+    return render(request, template_name, context)
+
+def buscar_editoras(request):
+    termo = request.GET.get('q', '')
+    editoras = Editora.objects.filter(nome__icontains=termo)[:10]
+    resultados = [{'id': e.id, 'nome': e.nome} for e in editoras]
+    return JsonResponse(resultados, safe=False)

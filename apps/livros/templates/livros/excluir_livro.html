@@ -44,11 +44,14 @@ if (localStorage.getItem("tema") === "dark") {
         <h5 class="card-title">Numero de paginas: {{livro.numero_paginas}}</h5>
 
         <div class="col-12 card mb-3">
-    <div class="card-header">
-        <button class="btn btn-danger" type="submit">Remover</button>
-        <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary">
-            Voltar
-        </a>
+            <div class="card-header">
+                <form method="post">
+                     {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">Remover</button>
+                    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary">Voltar</a>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -4,6 +4,7 @@ from .forms import LivroForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Livro
 
+
 def inserir_livro(request):
     template_name = 'livros/form_livro.html'
     if request.method == 'POST':
@@ -15,6 +16,7 @@ def inserir_livro(request):
     form = LivroForm()
     context = {'form': form}
     return render(request, template_name, context)
+
 
 def listar_livros(request):
     ordens = {
@@ -44,15 +46,15 @@ def listar_livros(request):
 
 
 def editar_livro(request, id):
-    template_name = 'livros/form_livro.html'
-    livro = get_object_or_404(Livro, id=id)
-    form = LivroForm(request.POST or None, request.FILES or None, instance=livro)
-    context = {'form': form}
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'Os dados foram atualizados com sucesso.')
-        return redirect('livros:listar_livros')
-    return render(request, template_name, context)
+        template_name = 'livros/form_livro.html'
+        livro = get_object_or_404(Livro, id=id)
+        form = LivroForm(request.POST or None, request.FILES or None, instance=livro)
+        context = {'form': form}
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Os dados foram atualizados com sucesso.')
+            return redirect('livros:listar_livros')
+        return render(request, template_name, context)
 
 def excluir_livro(request, id):
     template_name = 'livros/excluir_livro.html'
