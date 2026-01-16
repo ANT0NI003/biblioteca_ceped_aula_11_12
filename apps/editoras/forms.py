@@ -7,6 +7,7 @@ class EditoraForm(forms.ModelForm):
 
     class Meta:
         model = Editora
+        exclude = ['email']
         fields = '__all__'
 
 

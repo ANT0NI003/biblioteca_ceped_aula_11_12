@@ -1,12 +1,12 @@
-from apps.alunos import forms
+from django import forms
 from apps.livros.models import Livro
 
 
 
 
 
-class LivroForm(forms.ModelForm):
 
+class LivroForm(forms.ModelForm):
 
 
     class Meta:
@@ -20,4 +20,6 @@ class LivroForm(forms.ModelForm):
 
                        }),
         }
+
+
 

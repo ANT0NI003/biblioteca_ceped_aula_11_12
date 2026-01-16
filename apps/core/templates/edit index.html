@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h1 class="display-4"><i class="fa fa-university"></i> Biblioteca do Povão</h1>
+        <p class="lead">Bem-vindo de volta! Selecione uma das opções abaixo ou utilize o menu lateral.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-left-primary">
+            <div class="card-body text-center">
+                <i class="fa fa-users fa-3x mb-3 text-primary"></i>
+                <h5>Gestão de Alunos</h5>
+                <div class="d-grid gap-2">
+                    <a href="{% url 'alunos:inserir_aluno' %}" class="btn btn-outline-primary btn-sm">Cadastrar</a>
+                    <a href="{% url 'alunos:listar_alunos' %}" class="btn btn-primary btn-sm">Listagem</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-left-success">
+            <div class="card-body text-center">
+                <i class="fa fa-book fa-3x mb-3 text-success"></i>
+                <h5>Gestão de Livros</h5>
+                <div class="d-grid gap-2">
+                    <a href="{% url 'livros:inserir_livro' %}" class="btn btn-outline-success btn-sm">Inserir</a>
+                    <a href="{% url 'livros:listar_livros' %}" class="btn btn-success btn-sm">Listagem</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-left-warning">
+            <div class="card-body text-center">
+                <i class="fa fa-exchange fa-3x mb-3 text-warning"></i>
+                <h5>Empréstimos</h5>
+                <div class="d-grid gap-2">
+                    <a href="{% url 'emprestimos:inserir_emprestimo' %}" class="btn btn-outline-warning btn-sm">Novo</a>
+                    <a href="{% url 'emprestimos:listar_emprestimos' %}" class="btn btn-warning btn-sm">Histórico</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

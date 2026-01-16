@@ -51,8 +51,9 @@ def editar_editora(request, id):
         return redirect('editoras:listar_editoras')
     return render(request, template_name, context)
 
+
 def buscar_editoras(request):
     termo = request.GET.get('q', '')
     editoras = Editora.objects.filter(nome__icontains=termo)[:10]
-    resultados = [{'id': e.id, 'nome': e.nome} for e in editoras]
+    resultados = [{'id': e.id, 'text': e.nome} for e in editoras]  # text aqui
     return JsonResponse(resultados, safe=False)
