@@ -1,3 +1,4 @@
+
 .titulo-livro {
     max-width: 300px;        /* OBRIGATÓRIO */
     white-space: nowrap;    /* força 1 linha */
@@ -105,6 +106,8 @@ a:hover {
     padding: 6px 12px;
 
 }
+
+
 /* cor botao biblioteca */
 .menu-btn {
 

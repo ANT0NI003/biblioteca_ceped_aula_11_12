@@ -10,4 +10,4 @@ def index(request):
         'qtd_livros': Livro.objects.count(),
         'qtd_emprestimos': Emprestimo.objects.count(),
     }
-    return render(request, 'index.html')
+    return render(request, 'core/index.html')

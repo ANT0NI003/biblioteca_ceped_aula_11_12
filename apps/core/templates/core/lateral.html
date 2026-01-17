@@ -1,0 +1,28 @@
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <a href="{% url 'index' %}">
+                <h4><i class="fa fa-university"></i> BIBLIO-SISTEMA</h4>
+            </a>
+        </div>
+
+        <div class="menu-secao">Principal</div>
+        <a href="{% url 'index' %}" class="nav-link"><i class="fa fa-dashboard"></i> Dashboard (Início)</a>
+
+        <div class="menu-secao">Alunos</div>
+        <a href="{% url 'alunos:inserir_aluno' %}" class="nav-link"><i class="fa fa-plus"></i> Inserir Aluno</a>
+        <a href="{% url 'alunos:listar_alunos' %}" class="nav-link"><i class="fa fa-users"></i> Listar Alunos</a>
+
+        <div class="menu-secao">Livros</div>
+        <a href="{% url 'livros:inserir_livro' %}" class="nav-link"><i class="fa fa-plus-square"></i> Inserir Livro</a>
+        <a href="{% url 'livros:listar_livros' %}" class="nav-link"><i class="fa fa-book"></i> Listar Livros</a>
+
+        <div class="menu-secao">Empréstimos</div>
+        <a href="{% url 'emprestimos:inserir_emprestimo' %}" class="nav-link"><i class="fa fa-handshake-o"></i> Novo Empréstimo</a>
+        <a href="{% url 'emprestimos:listar_emprestimos' %}" class="nav-link"><i class="fa fa-history"></i> Histórico</a>
+
+        <div class="menu-secao">Editoras</div>
+        <a href="{% url 'editoras:inserir_editora' %}" class="nav-link"><i class="fa fa-handshake-o"></i> Nova editora</a>
+        <a href="{% url 'editoras:listar_editoras' %}" class="nav-link"><i class="fa fa-history"></i> Listar Editoras</a>
+    </nav>
+
