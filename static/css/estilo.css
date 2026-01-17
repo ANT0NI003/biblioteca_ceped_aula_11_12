@@ -115,18 +115,24 @@ a:hover {
 
     background-color: #bfbfbf;
     color: #131313;
-    border: none;
+    border: 2px solid ;
     border-radius: 6px;
     padding: 6px 12px;
     btn-hover-color: #131313;
 
 }
+.menu-btn:hover{
+    text-decoration: none;
+    border-color: black;
+    color: black;
+}
 
 /* cor botao voltar */
-.btn.btn-primary {
+.btn.btn-primary, .btn-primary:hover {
   --bs-btn-bg: #121212;
   --bs-btn-border-color: #8c8c8c;
   --bs-btn-color: #fff;
+    text-decoration: none;
 
   --bs-btn-hover-bg: #1f1f1f;
   --bs-btn-hover-border-color: #8c8c8c;
