@@ -48,17 +48,23 @@
 function mudarTema() {
     document.body.classList.toggle("dark");
 
-    if (document.body.classList.contains("dark")) {
-        localStorage.setItem("tema", "dark");
-    } else {
-        localStorage.setItem("tema", "light");
-    }
-}
+    const isDark = document.body.classList.contains("dark");
+    localStorage.setItem("tema", isDark ? "dark" : "light");
 
-/* Aplicar tema salvo ao carregar a página */
-if (localStorage.getItem("tema") === "dark") {
-    document.body.classList.add("dark");
+    atualizarBotao(isDark);
 }
+function atualizarBotao(isDark) {
+    const btn = document.getElementById("theme-toggle");
+
+        btn.innerHTML = isDark ? '<i class="fa fa-certificate"></i> Modo Claro' : '<i class="fa fa-moon-o"></i> Modo Escuro';
+    }
+
+
+
+/* aplicar ao carregar */
+const isDark = localStorage.getItem("tema") === "dark";
+document.body.classList.toggle("dark", isDark);
+atualizarBotao(isDark);
 </script>
 
 

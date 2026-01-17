@@ -108,6 +108,8 @@ a:hover {
 }
 
 
+
+
 /* cor botao biblioteca */
 .menu-btn {
 
@@ -200,6 +202,7 @@ body.dark .form-control:focus {
 body.dark .tema-btn {
     background-color: #cdcdcd;
     color: black;
+
 }
 
 /* cor site excluir */

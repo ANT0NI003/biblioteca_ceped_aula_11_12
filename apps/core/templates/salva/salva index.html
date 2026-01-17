@@ -39,9 +39,13 @@ if (localStorage.getItem("tema") === "dark") {
 
         <h1 class="mb-2">Biblioteca do Povão</h1>
 		<div class="card-button">
-               		 <!-- Botão de alternar tema -->
-                  	  <button class="tema-btn position-fixed top-0 end-0 m-4" onclick="mudarTema()">Alternar Tema</button>
-            	</div>
+            <!-- Botão de alternar tema -->
+            <button class="tema-btn position-fixed top-0 end-0 m-4" onclick="mudarTema()">Alternar Tema</button>
+
+            <button id="theme-toggle" onclick="mudarTema()" class="tema-btn">
+                    <i id="theme-icon" class="fa fa-power-off"></i> Modo Escuro
+                </button>
+        </div>
 
         <p class="text-muted mb-4">
             <h3> Sistema de gerenciamento da biblioteca </h3>

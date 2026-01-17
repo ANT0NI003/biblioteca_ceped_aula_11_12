@@ -3,20 +3,38 @@
 
         /* Sidebar */
         .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
             width: var(--sidebar-width);
             background-color: #2c3e50;
             color: white;
-            position: fixed;
-            height: 100vh;
-            left: 0; top: 0;
-            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+
+
         }
+        .sidebar-menu {
+            overflow-y: auto;
+
+            /* Firefox (padrão oficial) */
+            scrollbar-width: thin;
+            scrollbar-color: #666 transparent;
+        }
+
         .sidebar-header {
             padding: 20px;
             background-color: #1a252f;
             text-align: center;
         }
+        body.dark .sidebar-header {
+            padding: 20px;
+            background-color: #131313;
+            text-align: center;
+        }
         .sidebar-header a { color: white; text-decoration: none; }
+
 
         .menu-secao {
             padding: 15px 20px 5px;
@@ -41,7 +59,7 @@
         /* Navbar Superior Fixa */
         .top-navbar {
             height: 60px;
-            background-color: white;
+            background-color:none;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -50,6 +68,29 @@
             position: sticky;
             top: 0;
             z-index: 999;
+        }
+
+        .tema-geral-btn {
+
+            background-color: #0c1317;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            --bs-btn-hover-bg: #162127;
+        }
+        body.dark .tema-geral-btn {
+
+            background-color: #cdcdcd;
+            color: black;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+
+        }
+        body.dark .tema-geral-btn:hover{
+            background-color: #a1a1a1;
+
         }
         .content-area { padding: 30px; }
 
