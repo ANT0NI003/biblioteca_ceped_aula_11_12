@@ -5,23 +5,6 @@
 
 {% block content %}
 
-<script>
-function mudarTema() {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-        localStorage.setItem("tema", "dark");
-    } else {
-        localStorage.setItem("tema", "light");
-    }
-}
-
-/* Aplicar tema salvo ao carregar a página */
-if (localStorage.getItem("tema") === "dark") {
-    document.body.classList.add("dark");
-}
-</script>
-
 
     <div class="row">
         <div class="col-12">
@@ -39,8 +22,8 @@ if (localStorage.getItem("tema") === "dark") {
                     Ordenar
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="ordenarDropdown">
-                    <li><a class="dropdown-item" href="?ordem=id_asc">ID Crescente</a></li>
-                    <li><a class="dropdown-item" href="?ordem=id_desc">ID Decrescente</a></li>
+                    <li><a class="dropdown-item" href="?ordem=id_asc">ID 1 → 9</a></li>
+                    <li><a class="dropdown-item" href="?ordem=id_desc">ID 9 → 1</a></li>
                     <li><a class="dropdown-item" href="?ordem=nome_asc">Nome A → Z</a></li>
                     <li><a class="dropdown-item" href="?ordem=nome_desc">Nome Z → A</a></li>
                     <li><a class="dropdown-item" href="?ordem=matricula_asc">Matrícula Crescente</a></li>

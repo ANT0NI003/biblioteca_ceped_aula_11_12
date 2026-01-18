@@ -4,6 +4,8 @@ from .forms import LivroForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Livro
 
+from django.http import JsonResponse
+
 
 
 
@@ -22,6 +24,9 @@ def inserir_livro(request):
 
 def listar_livros(request):
     ordens = {
+        'id_asc': 'id',
+        'id_desc': '-id',
+
         'titulo_asc': Lower('titulo'),
         'titulo_desc': Lower('titulo').desc(),
 
@@ -32,8 +37,8 @@ def listar_livros(request):
         'editora_desc': Lower('editora').desc(),
     }
 
-    ordem = request.GET.get('ordem', 'titulo_asc')
-    ordem_db = ordens.get(ordem, Lower('titulo'))
+    ordem = request.GET.get('ordem', 'id_asc')
+    ordem_db = ordens.get(ordem,  ('id'))
 
     livros = (
         Livro.objects
@@ -67,3 +72,9 @@ def excluir_livro(request, id):
         messages.error(request, 'O livro foi excluído com sucesso.')
         return redirect('livros:listar_livros')
     return render(request, template_name, context)
+
+def buscar_livros(request):
+    termo = request.GET.get('q', '')
+    livros = Livro.objects.filter(titulo__icontains=termo)[:10]
+    resultados = [{'id': l.id, 'text': l.titulo} for l in livros]  # text aqui
+    return JsonResponse(resultados, safe=False)

@@ -169,6 +169,7 @@ body.dark {
     background-color: #121212;
     color: white;
     transition: 0.3s;
+
 }
 
 body.dark .card {
@@ -197,6 +198,14 @@ body.dark .form-control {
     background-color: #3e3e3e;
     border-color: #4da378;
     color: #a7cfbb;
+
+}
+body.dark .form-control::placeholder,body.dark .fa-search {
+    color: #a7cfbb;
+
+}
+.fa-search{
+    color: gray;
 }
 body.dark .form-control:focus {
     background-color: #2a2a2a;
@@ -228,3 +237,4 @@ body.dark td a {
     text-decoration: none;
     color: inherit;
 }
+

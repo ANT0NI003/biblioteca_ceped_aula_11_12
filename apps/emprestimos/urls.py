@@ -5,10 +5,12 @@ from apps.emprestimos import views
 app_name = 'apps.emprestimos'
 
 urlpatterns = [
+
     path('inserir_emprestimo/', views.inserir_emprestimo, name='inserir_emprestimo'),
     path('listar_emprestimos/', views.listar_emprestimos, name='listar_emprestimos'),
     path('editar_emprestimo/<int:id>/', views.editar_emprestimo, name='editar_emprestimo'),
     path('excluir_emprestimo/<int:id>/', views.excluir_emprestimo, name='excluir_emprestimo'),
     path('aluno_emprestimo/<int:id>/', views.aluno_emprestimo, name='aluno_emprestimo'),
     path('livro_emprestimo/<int:id>/', views.livro_emprestimo, name='livro_emprestimo'),
+    path('novo/<int:livro_id>/', views.criar_emprestimo, name='emprestimo_por_livro'),
 ]

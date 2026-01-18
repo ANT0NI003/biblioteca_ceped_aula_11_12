@@ -46,14 +46,18 @@ if (localStorage.getItem("tema") === "dark") {
                     <div class="p-1 mb-2 form-box">
                         <div class="row">
                             <div class="col-md-4">
-                                {{ form.aluno_id.errors }}
                                 <label><strong>Aluno:</strong></label>
-                                {{ form.aluno_id |add_class:"form-control" }}
+                                <input type="text" id="id_aluno" name="aluno" class="form-control" placeholder="Digite o nome do aluno">
+                                <input type="hidden" id="id_aluno_id" name="aluno_id">
                             </div>
                             <div class="col-md-7">
-                                {{ form.livro_id.errors }}
-                                <label><strong>Livro:</strong></label>
-                                {{ form.livro_id |add_class:'form-control' }}
+                            <label><strong>Livro:</strong></label>
+                                <input type="text" id="id_livro" name="livro" class="form-control"
+                                       value="{% if livro %}{{ livro.titulo }}{% endif %}"
+                                       placeholder="Digite o nome do livro">
+
+                                <input type="hidden" id="id_livro_id" name="livro_id"
+                                       value="{% if livro %}{{ livro.id }}{% endif %}">
                             </div>
                         </div>
                     </div>
@@ -89,6 +93,65 @@ if (localStorage.getItem("tema") === "dark") {
             </form>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" ></script>
+
+
+
+
+<script>
+$(function() {
+    $("#id_livro").autocomplete({
+        source: function(request, response) {
+            $.getJSON("{% url 'livros:buscar_livros' %}", { q: request.term }, function(data) {
+                response($.map(data, function(item) {
+                    return {
+                        label: item.text, // nome que aparece para o usuário
+                        value: item.text, // o que vai aparecer no input
+                        id: item.id       // id real do livro
+                    };
+                }));
+            });
+        },
+        minLength: 2,  // começa a buscar após 2 caracteres
+        select: function(event, ui) {
+            // salva o ID real no campo oculto
+            $("#id_livro_id").val(ui.item.id);
+        },
+        change: function(event, ui) {
+            // se limpar ou digitar algo não existente, limpa o hidden
+            if (!ui.item) {
+                $("#id_livro_id").val("");
+            }
+        }
+    });
+});
+</script>
+
+<script>
+$(function() {
+    $("#id_aluno").autocomplete({
+        source: function(request, response) {
+            $.getJSON("{% url 'alunos:buscar_alunos' %}", { q: request.term }, function(data) {
+                response($.map(data, function(item) {
+                    return {
+                        label: item.text, // nome que aparece para o usuário
+                        value: item.text, // o que vai aparecer no input
+                        id: item.id       // id real do aluno
+                    };
+                }));
+            });
+        },
+        minLength: 2,  // começa a buscar após 2 caracteres
+        select: function(event, ui) {
+            // salva o ID real no campo oculto
+            $("#id_aluno_id").val(ui.item.id);
+        },
+        change: function(event, ui) {
+            // se limpar ou digitar algo não existente, limpa o hidden
+            if (!ui.item) {
+                $("#id_aluno_id").val("");
+            }
+        }
+    });
+});
+</script>
 {% endblock %}
