@@ -27,6 +27,7 @@
             padding: 20px;
             background-color: #1a252f;
             text-align: center;
+
         }
         body.dark .sidebar-header {
             padding: 20px;
@@ -50,7 +51,13 @@
             align-items: center;
             transition: 0.2s;
         }
-        .nav-link:hover { background-color: #34495e; color: white; }
+        .nav-link:hover {
+        background-color: #34495e;
+        color: white;
+        text-decoration-line: underline;
+        text-decoration-color: inherit;
+        }
+
         .nav-link i { width: 25px; margin-right: 10px; }
 
         /* Conteúdo */

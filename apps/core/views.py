@@ -11,3 +11,7 @@ def index(request):
         'qtd_emprestimos': Emprestimo.objects.count(),
     }
     return render(request, 'core/index.html')
+
+
+def configuracao(request):
+    return render(request, "core/configuracao.html")
