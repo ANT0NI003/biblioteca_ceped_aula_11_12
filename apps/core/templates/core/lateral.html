@@ -12,10 +12,19 @@
             </a>
         </div>
         <div class="sidebar-menu">
-            <!-- Botão de tema -->
-            <button id="theme-toggle" onclick="mudarTema()" class="btn tema-geral-btn">
-                <i id="theme-icon" class="fa fa-moon-o"></i> Modo Escuro
-            </button>
+
+            <div class="btn-row">
+
+                                 <!-- Botão de tema -->
+                <button id="theme-toggle" onclick="mudarTema()" class="btn tema-geral-btn flex-btn">
+                    <i id="theme-icon" class="fa fa-moon-o"></i> Modo Escuro
+                </button>
+
+                <button id="sidebar-user-theme-btn" class="btn tema-user-btn flex-btn">
+                    <i class="fa fa-power-off"></i>
+                </button>
+
+            </div>
             <div class="menu-secao">Principal
             </div>
             <a href="{% url 'index' %}" class="nav-link"><i class="fa fa-dashboard"></i> Dashboard (Início)</a>

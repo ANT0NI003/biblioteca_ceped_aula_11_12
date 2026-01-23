@@ -1,11 +1,5 @@
 /* configuracao */
-.settings {
-    max-width: 700px;
-    margin: 30px auto;
-    background-color: #1e1e1e;
 
-
-}
 
 .settings h2 {
     margin-bottom: 20px;
@@ -13,6 +7,7 @@
 
 .settings-section {
     margin-bottom: 30px;
+    margin-top: 15px;
 
 }
 
@@ -23,9 +18,11 @@
 }
 
 .settings-card {
-    background-color:  #2b2b2b;
-    border-radius: 12px;
-    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: visible;
 
 }
 
@@ -34,8 +31,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 14px 18px;
-    border-bottom: 1px solid rgba(255,255,255,.06);
+    outline: 3px solid rgba(255,255,255,.16);
+    outline-offset: -3px;
+    background:linear-gradient(
+      rgba(0,0,0,.15),
+      rgba(0,0,0,.15)
+    ) ;
+
 }
+
+
 
 .settings-item:last-child {
     border-bottom: none;
@@ -47,6 +52,7 @@
     color: inherit;
     padding: 6px 12px;
     border-radius: 8px;
+    border-color: inherit;
 
 }
 
@@ -61,12 +67,43 @@
     border: 1px solid #444;
     background: transparent;
     color: inherit;
+    border-color: inherit;
+
+}
+.esconder-theme-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: transparent;
+    color: inherit;
+    border-color: inherit;
 
 }
 
 .theme-btn.active {
-    background: #444;
+    background: linear-gradient(
+      rgba(0,0,0,.15)
+    );
 }
+
+body.dark .theme-btn.active {
+    background: linear-gradient(
+      rgba(255,255,255,.15)
+    );
+}
+
+.botao-ativado.active {
+    background: linear-gradient(
+        rgba(0,0,0,.15)
+    );
+}
+
+body.dark .botao-ativado.active {
+    background: linear-gradient(
+        rgba(255,255,255,.15)
+    );
+}
+
 
 .theme-options {
     padding-top: 10px;
@@ -125,8 +162,16 @@ body.usuario-theme .table {
 }
 
 .usuario-theme .settings-card {
+    background-color: color-mix(
+    in srgb,
+    var(--card-bg),
+    black 50%);
+}
+
+.usuario-theme .settings-item {
     background-color: var(--card-bg);
 }
+
 
 .usuario-theme .settings {
     background-color: color-mix(

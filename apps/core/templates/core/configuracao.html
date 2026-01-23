@@ -3,74 +3,93 @@
 {% block title %}Configuração{% endblock %}
 
 {% block content %}
-<div class="settings">
+<div class="card mb-3">
 
-    <h2>Configurações</h2>
-
-    <!-- CONTA -->
-    <section class="settings-section">
-        <h3>Conta</h3>
-
-        <div class="settings-card">
-            <div class="settings-item">
-                <span>Email</span>
-                <button class="btn-outline">Alterar</button>
+    <section class="settings">
+            <div class="card-header">
+                <h2><i class="fa fa-cog"></i> configurações</h2>
             </div>
+        <!-- CONTA -->
+        <section class="settings-section">
+            <h3>Conta</h3>
 
-            <div class="settings-item">
-                <span>Senha</span>
-                <button class="btn-outline">Alterar</button>
+            <div class="settings-card">
+                <div class="settings-item">
+                    <span>Email</span>
+                    <button class="btn-outline">Alterar</button>
+                </div>
+
+                <div class="settings-item">
+                    <span>Senha</span>
+                    <button class="btn-outline">Alterar</button>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- APARÊNCIA -->
+        <section class="settings-section">
+            <h3>Aparência</h3>
+
+            <div class="settings-card">
+                <div class="settings-item">
+                    <span>Tema</span>
+                    <div class="theme-switch">
+                        <button data-theme="light" class="theme-btn">Padrao</button>
+                        <button data-theme="dark" class="theme-btn active">Configurar</button>
+                    </div>
+                </div>
+
+                <!-- OPÇÕES DO TEMA ESCURO -->
+                <div id="dark-options" class="theme-options">
+                    <div class="settings-item">
+                        <span>Cor de fundo</span>
+                        <input type="color" id="bgPicker">
+                        <input type="color" id="bgcardPicker">
+                    </div>
+                    <div class="settings-item">
+                        <span>Cor de listagem</span>
+                        <input type="color" id="tablePicker">
+                        <input type="color" id="cardtextPicker">
+                    </div>
+
+                    <div class="settings-item">
+                        <span>Cor do texto</span>
+                        <input type="color" id="textPicker">
+                        <input type="color" id="lateraltextPicker">
+
+                    </div>
+
+                    <div class="settings-item">
+                        <span>Cor da lateral</span>
+                        <input type="color" id="sidebarPicker">
+                    </div>
+
+                    <div class="settings-item">
+                        <span>Raio dos cards</span>
+                        <input type="range" id="radiusPicker" min="0" max="30">
+                    </div>
+                </div>
+            </div>
+            <section class="settings-section">
+                <div  class="settings-item">
+                    <span>Botao de tema</span>
+                        <div class="theme-switch">
+                        <button id="toggle-theme-btn"
+                                class="esconder-theme-btn botao-ativado"
+                                data-storage="showThemeButton"></button>
+                        </div>
+                </div>
+                <div  class="settings-item">
+                    <span>Botao de tema personalizado</span>
+                        <div class="theme-switch">
+                        <button id="toggle-usuario-btn"
+                                class="esconder-theme-btn botao-ativado"
+                                data-storage="showThemeButton">Ativar</button>
+                        </div>
+                </div>
+            </section>
+        </section>
     </section>
-
-    <!-- APARÊNCIA -->
-    <section class="settings-section">
-        <h3>Aparência</h3>
-
-        <div class="settings-card">
-            <div class="settings-item">
-                <span>Tema</span>
-                <div class="theme-switch">
-                    <button data-theme="light" class="theme-btn">Padrao</button>
-                    <button data-theme="dark" class="theme-btn active">Configurar</button>
-                </div>
-            </div>
-
-            <!-- OPÇÕES DO TEMA ESCURO -->
-            <div id="dark-options" class="theme-options">
-                <div class="settings-item">
-                    <span>Cor de fundo</span>
-                    <input type="color" id="bgPicker">
-                    <input type="color" id="bgcardPicker">
-                </div>
-                <div class="settings-item">
-                    <span>Cor de listagem</span>
-                    <input type="color" id="tablePicker">
-                    <input type="color" id="cardtextPicker">
-                </div>
-
-                <div class="settings-item">
-                    <span>Cor do texto</span>
-                    <input type="color" id="textPicker">
-                    <input type="color" id="lateraltextPicker">
-
-                </div>
-
-                <div class="settings-item">
-                    <span>Cor da lateral</span>
-                    <input type="color" id="sidebarPicker">
-                </div>
-
-                <div class="settings-item">
-                    <span>Raio dos cards</span>
-                    <input type="range" id="radiusPicker" min="0" max="30">
-                </div>
-            </div>
-        </div>
-    </section>
-
-
 </div>
 
 <!-- JS DA PÁGINA DE CONFIGURAÇÃO -->
@@ -162,6 +181,61 @@ window.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.setProperty("--lateral-text", lateraltextPicker.value);
     document.documentElement.style.setProperty("--user-sidebar", sidebarPicker.value);
     document.documentElement.style.setProperty("--user-radius", radiusPicker.value + "px");
+});
+</script>
+
+<!-- função do botao esconder tema -->
+<script>
+   const THEME_BTN_KEY = "showThemeButton";
+const toggleBtn = document.getElementById("toggle-theme-btn");
+
+// estado inicial
+const showThemeBtn = localStorage.getItem(THEME_BTN_KEY) !== "false";
+document.body.classList.toggle("show-theme-btn", showThemeBtn);
+
+// texto inicial do botão (se existir)
+if (toggleBtn) {
+  toggleBtn.textContent = showThemeBtn
+    ? "Ativado"
+    : "Desativado";
+
+
+
+  toggleBtn.addEventListener("click", () => {
+    const show = !document.body.classList.contains("show-theme-btn");
+
+
+
+    localStorage.setItem(THEME_BTN_KEY, show);
+    document.body.classList.toggle("show-theme-btn", show);
+
+    toggleBtn.textContent = show
+      ? "Ativado"
+      : "Desativado";
+
+
+      // ATUALIZA O VISUAL
+  toggleBtn.classList.toggle(
+    "active",
+    localStorage.getItem(THEME_BTN_KEY) === "false"
+  );
+  });
+
+
+
+}
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".botao-ativado").forEach(btn => {
+    const key = btn.dataset.storage;
+    if (!key) return;
+
+    const isActive = localStorage.getItem(key) === "false";
+    btn.classList.toggle("active", isActive);
+  });
 });
 </script>
 
