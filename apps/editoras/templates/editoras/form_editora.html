@@ -6,26 +6,6 @@
 {% block content %}
 
 
-<!-- Botão de alternar tema -->
-<script>
-function mudarTema() {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-        localStorage.setItem("tema", "dark");
-    } else {
-        localStorage.setItem("tema", "light");
-    }
-}
-
-/* Aplicar tema salvo ao carregar a página */
-if (localStorage.getItem("tema") === "dark") {
-    document.body.classList.add("dark");
-}
-</script>
-
-
-
 
     <div class="row">
         <div class="col-12"></div>
@@ -34,10 +14,7 @@ if (localStorage.getItem("tema") === "dark") {
         <div class="card-header">
             <h2><i class="fa fa-users"></i> Cadastro de Editora</h2>
             {% include 'partials/messages.html' %}
-            <div class="card-button">
-            <!-- Botão de alternar tema -->
-                <button class="tema-btn" onclick="mudarTema()">Alternar Tema</button>
-            </div>
+
         </div>
         <div class="card-body">
             <form method="post" enctype="multipart/form-data">

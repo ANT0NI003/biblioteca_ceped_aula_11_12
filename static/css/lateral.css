@@ -155,6 +155,10 @@
           display: none;
         }
 
+        body:not(.show-usertheme-btn) .tema-user-btn {
+          display: none;
+        }
+
         .btn-row{
             display: flex;
             gap: 8px;

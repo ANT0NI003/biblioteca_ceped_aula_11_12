@@ -79,14 +79,16 @@
                                 data-storage="showThemeButton"></button>
                         </div>
                 </div>
+                <section class="settings-section">
                 <div  class="settings-item">
                     <span>Botao de tema personalizado</span>
                         <div class="theme-switch">
                         <button id="toggle-usuario-btn"
                                 class="esconder-theme-btn botao-ativado"
-                                data-storage="showThemeButton">Ativar</button>
+                                >Ativado</button>
                         </div>
                 </div>
+                </section>
             </section>
         </section>
     </section>
@@ -225,6 +227,52 @@ if (toggleBtn) {
 
 }
 
+</script>
+
+<!-- função do botao esconder tema usuario -->
+<script>
+const USERTHEME_BTN_KEY = "showUserThemeButton";
+const toggleUsuarioBtn = document.getElementById("toggle-usuario-btn");
+
+// ===== ESTADO INICIAL (IGUAL AO BOTÃO NORMAL) =====
+const showUserThemeBtn =
+  localStorage.getItem(USERTHEME_BTN_KEY) === "true";
+
+// APLICA A CLASSE NO BODY AO CARREGAR
+document.body.classList.toggle(
+  "show-usertheme-btn",
+  showUserThemeBtn
+);
+
+if (toggleUsuarioBtn) {
+  // TEXTO INICIAL
+  toggleUsuarioBtn.textContent =
+    showUserThemeBtn ? "Ativado" : "Desativado";
+
+  toggleUsuarioBtn.classList.toggle(
+    "botao-ativado",
+    showUserThemeBtn
+  );
+
+  toggleUsuarioBtn.addEventListener("click", () => {
+    const show =
+      !document.body.classList.contains("show-usertheme-btn");
+
+    localStorage.setItem(USERTHEME_BTN_KEY, show);
+    document.body.classList.toggle(
+      "show-usertheme-btn",
+      show
+    );
+
+    toggleUsuarioBtn.textContent =
+      show ? "Ativado" : "Desativado";
+
+    toggleUsuarioBtn.classList.toggle(
+      "botao-ativado",
+      show
+    );
+  });
+}
 </script>
 
 <script>
