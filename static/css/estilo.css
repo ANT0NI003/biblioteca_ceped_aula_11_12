@@ -1,3 +1,8 @@
+/* exemplo */
+.layout.no-lateral .main-container {
+    margin-left: 0;  /* ou largura 100% */
+}
+
 
 .titulo-livro {
     max-width: 300px;        /* OBRIGATÓRIO */

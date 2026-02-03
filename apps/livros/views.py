@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models.functions import Lower
 from .forms import LivroForm
@@ -8,7 +9,7 @@ from django.http import JsonResponse
 
 
 
-
+@login_required(login_url='usuarios:login')
 def inserir_livro(request):
     template_name = 'livros/form_livro.html'
     if request.method == 'POST':

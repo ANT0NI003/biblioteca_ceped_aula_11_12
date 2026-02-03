@@ -47,9 +47,11 @@
             <a href="{% url 'editoras:listar_editoras' %}" class="nav-link"><i class="fa fa-folder-open"></i> Listar Editoras</a>
 
             <div class="menu-secao">Opções</div>
-            <a href="{% url 'editoras:inserir_editora' %}" class="nav-link"><i class="fa fa-user-circle"></i> Login</a>
-            <a href="{% url 'editoras:inserir_editora' %}" class="nav-link"><i class="fa fa-user-circle"></i> Registro</a>
+            <a href="{% url 'usuarios:login' %}" class="nav-link"><i class="fa fa-user-circle"></i> Login</a>
+            <a href="{% url 'usuarios:inserir_usuario' %}" class="nav-link"><i class="fa fa-user-circle"></i> Cadastrar Usuario</a>
+            <a href="{% url 'usuarios:inserir_usuario' %}" class="nav-link"><i class="fa fa-user-circle"></i> Cadastrar Usuario</a>
             <a href="{% url 'core:configuracao' %}" class="nav-link"><i class="fa fa-cog"></i> Configurações</a>
+            <a href="{% url 'core:ajuda' %}" class="nav-link"><i class="fa fa-question-circle"></i> Ajuda</a>
         </div>
     </nav>
 

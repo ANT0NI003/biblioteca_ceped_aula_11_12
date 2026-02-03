@@ -1,9 +1,10 @@
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from apps.alunos.models import Aluno
 from apps.livros.models import Livro
 from apps.emprestimos.models import Emprestimo
 
+@login_required(login_url='usuarios:login')
 def index(request):
     context = {
         'qtd_alunos': Aluno.objects.count(),
@@ -15,3 +16,6 @@ def index(request):
 
 def configuracao(request):
     return render(request, "core/configuracao.html")
+
+def ajuda(request):
+    return render(request, "core/ajuda.html")
