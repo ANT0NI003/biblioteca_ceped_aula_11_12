@@ -48,8 +48,7 @@
 
             <div class="menu-secao">Opções</div>
             <a href="{% url 'usuarios:login' %}" class="nav-link"><i class="fa fa-user-circle"></i> Login</a>
-            <a href="{% url 'usuarios:inserir_usuario' %}" class="nav-link"><i class="fa fa-user-circle"></i> Cadastrar Usuario</a>
-            <a href="{% url 'usuarios:inserir_usuario' %}" class="nav-link"><i class="fa fa-user-circle"></i> Cadastrar Usuario</a>
+            <a href="{% url 'usuarios:inserir_usuario' %}"   class="nav-link" data-auth="{{ user.is_authenticated }}"> <i class="fa fa-user-circle"></i> Cadastrar Usuario</a>
             <a href="{% url 'core:configuracao' %}" class="nav-link"><i class="fa fa-cog"></i> Configurações</a>
             <a href="{% url 'core:ajuda' %}" class="nav-link"><i class="fa fa-question-circle"></i> Ajuda</a>
         </div>

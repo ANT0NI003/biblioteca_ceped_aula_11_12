@@ -4,7 +4,6 @@ from apps.alunos.models import Aluno
 from apps.livros.models import Livro
 from apps.emprestimos.models import Emprestimo
 
-@login_required(login_url='usuarios:login')
 def index(request):
     context = {
         'qtd_alunos': Aluno.objects.count(),
